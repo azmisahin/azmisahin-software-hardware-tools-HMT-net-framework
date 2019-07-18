@@ -1,12 +1,13 @@
 ﻿namespace HMT {
     using System.Collections.Generic;
-    using System.Management;
     using System.Linq;
+    using System.Management;
 
     /// <summary>
     /// Hardware Finder
     /// </summary>
     public class HardwareFinder : HardwareAdapter {
+
         /// <summary>
         /// Hardware Api Class Name
         /// </summary>
@@ -21,61 +22,17 @@
         }
 
         /// <summary>
-        /// Get Hardware List
-        /// </summary>
-        /// <param name="hardwareName"></param>
-        /// <returns>List<HardwareData></returns>
-        public List<HardwareData> GetHardwares() {
-            // Hardware Data List Define
-            List<HardwareData> hardwareDataList = new List<HardwareData>();
-
-            // Hardware Collection List
-            IEnumerable<ManagementObject> hardwareCollection = GetHardwareCollection();
-
-            // Hardware Collection Scan
-            foreach (ManagementObject hardwareObject in hardwareCollection) {
-                // Haedware Data Define
-                HardwareData hardwareData = new HardwareData();
-
-                // Hardware Object Properties Scan
-                foreach (PropertyData propertyData in hardwareObject.Properties) {
-                    // Hardware Data Property Define
-                    HardwareDataProperty property = new HardwareDataProperty();
-
-                    // Set Property Name
-                    property.Name = propertyData.Name;
-
-                    // Set Property Value
-                    property.Value = propertyData.Value;
-
-                    // Add Hardware Data Add
-                    hardwareData.Properties.Add(property);
-                }
-
-                // Set Adapter
-                hardwareData.Name = (from HardwareDataProperty item in hardwareData.Properties
-                                     where item.Name == "Name"
-                                     select item.Value).FirstOrDefault().ToString();
-
-                // Hardware Data List Add
-                hardwareDataList.Add(hardwareData);
-            }
-
-            // Return All Hardware Data List
-            return hardwareDataList;
-        }
-
-        /// <summary>
         /// Get Hardware
         /// </summary>
         /// <param name="hardwareName"></param>
         /// <returns></returns>
         public HardwareData GetHardware(string hardwareName) {
+
             // Define Hardware Data
             HardwareData result;
 
             // Select Hardware
-            result = (from HardwareData item in GetHardwares()
+            result = (from HardwareData item in Hardwares
                       where item.Name == hardwareName
                       select item).FirstOrDefault();
 
@@ -95,18 +52,19 @@
             object result = null;
 
             // Hardware Collection List
-            IEnumerable<ManagementObject> hardwareCollection = GetHardwareCollection();
+            IEnumerable<ManagementObject> hardwareCollection = HardwareCollection;
 
             // Hardware Collection Scan
             foreach (ManagementObject hardwareObject in hardwareCollection) {
 
                 // Hardware Object Properties Scan
                 foreach (PropertyData propertyData in hardwareObject.Properties) {
+
                     // Set Property Name
-                    var Name = propertyData.Name;
+                    string Name = propertyData.Name;
 
                     // Set Property Value
-                    var Value = propertyData.Value;
+                    object Value = propertyData.Value;
                 }
 
                 // Execute Method

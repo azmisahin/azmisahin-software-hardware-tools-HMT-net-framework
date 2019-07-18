@@ -11,175 +11,175 @@
         /// Caption
         /// </summary>
         /// <return>string</return>
-        public string Caption { get { return getStringValue("Caption"); } }
+        public string Caption => getStringValue("Caption");
 
         /// <summary>
         /// Color
         /// </summary>
         /// <return>string</return>
-        public string Color { get { return getStringValue("Color"); } }
+        public string Color => getStringValue("Color");
 
         /// <summary>
         /// DataType
         /// </summary>
         /// <return>string</return>
-        public string DataType { get { return getStringValue("DataType"); } }
+        public string DataType => getStringValue("DataType");
 
         /// <summary>
         /// Description
         /// </summary>
         /// <return>string</return>
-        public string Description { get { return getStringValue("Description"); } }
+        public string Description => getStringValue("Description");
 
         /// <summary>
         /// Document
         /// </summary>
         /// <return>string</return>
-        public string Document { get { return getStringValue("Document"); } }
+        public string Document => getStringValue("Document");
 
         /// <summary>
         /// DriverName
         /// </summary>
         /// <return>string</return>
-        public string DriverName { get { return getStringValue("DriverName"); } }
+        public string DriverName => getStringValue("DriverName");
 
         /// <summary>
         /// ElapsedTime
         /// </summary>
         /// <return>DateTime</return>
-        public object ElapsedTime { get { return getValue("ElapsedTime"); } }
+        public object ElapsedTime => getValue("ElapsedTime");
 
         /// <summary>
         /// HostPrintQueue
         /// </summary>
         /// <return>string</return>
-        public string HostPrintQueue { get { return getStringValue("HostPrintQueue"); } }
+        public string HostPrintQueue => getStringValue("HostPrintQueue");
 
         /// <summary>
         /// InstallDate
         /// </summary>
         /// <return>DateTime</return>
-        public object InstallDate { get { return getValue("InstallDate"); } }
+        public object InstallDate => getValue("InstallDate");
 
         /// <summary>
         /// Job ID
         /// </summary>
         /// <return>uint</return>
-        public UInt32 JobId { get { return getUint32Value("JobId"); } }
+        public uint JobId => getUint32Value("JobId");
 
         /// <summary>
         /// string
         /// </summary>
         /// <return>JobStatus</return>
-        public string JobStatus { get { return getStringValue("JobStatus"); } }
+        public string JobStatus => getStringValue("JobStatus");
 
         /// <summary>
         /// Name
         /// </summary>
         /// <return>string</return>
-        public string Name { get { return getStringValue("Name"); } }
+        public string Name => getStringValue("Name");
 
         /// <summary>
         /// Notify
         /// </summary>
         /// <return>string</return>
-        public string Notify { get { return getStringValue("Notify"); } }
+        public string Notify => getStringValue("Notify");
 
         /// <summary>
         /// Owner
         /// </summary>
         /// <return>string</return>
-        public string Owner { get { return getStringValue("Owner"); } }
+        public string Owner => getStringValue("Owner");
 
         /// <summary>
         /// PagesPrinted
         /// </summary>
         /// <return>uint</return>
-        public UInt32 PagesPrinted { get { return getUint32Value("PagesPrinted"); } }
+        public uint PagesPrinted => getUint32Value("PagesPrinted");
 
         /// <summary>
         /// PaperLength
         /// </summary>
         /// <return>uint</return>
-        public UInt32 PaperLength { get { return getUint32Value("PaperLength"); } }
+        public uint PaperLength => getUint32Value("PaperLength");
 
         /// <summary>
         /// PaperSize
         /// </summary>
         /// <return>string</return>
-        public string PaperSize { get { return getStringValue("PaperSize"); } }
+        public string PaperSize => getStringValue("PaperSize");
 
         /// <summary>
         /// PaperWidth
         /// </summary>
         /// <return>uint</return>
-        public UInt32 PaperWidth { get { return getUint32Value("PaperWidth"); } }
+        public uint PaperWidth => getUint32Value("PaperWidth");
 
         /// <summary>
         /// Parameters
         /// </summary>
         /// <return>string</return>
-        public string Parameters { get { return getStringValue("Parameters"); } }
+        public string Parameters => getStringValue("Parameters");
 
         /// <summary>
         /// PrintProcessor
         /// </summary>
         /// <return>string</return>
-        public string PrintProcessor { get { return getStringValue("PrintProcessor"); } }
+        public string PrintProcessor => getStringValue("PrintProcessor");
 
         /// <summary>
         /// Priority
         /// </summary>
         /// <return>uint</return>
-        public UInt32 Priority { get { return getUint32Value("Priority"); } }
+        public uint Priority => getUint32Value("Priority");
 
         /// <summary>
         /// Size
         /// </summary>
         /// <return>uint</return>
-        public UInt32 Size { get { return getUint32Value("Size"); } }
+        public uint Size => getUint32Value("Size");
 
         /// <summary>
         /// SizeHigh
         /// </summary>
         /// <return>uint</return>
-        public UInt32 SizeHigh { get { return getUint32Value("SizeHigh"); } }
+        public uint SizeHigh => getUint32Value("SizeHigh");
 
         /// <summary>
         /// StartTime
         /// </summary>
         /// <return>DateTime</return>
-        public object StartTime { get { return getValue("StartTime"); } }
+        public object StartTime => getValue("StartTime");
 
         /// <summary>
         /// Status
         /// </summary>
         /// <return>string</return>
-        public string Status { get { return getStringValue("Status"); } set { setValue("StatusMask", value); } }
+        public string Status { get => getStringValue("Status"); set => setValue("StatusMask", value); }
 
         /// <summary>
         /// StatusMask
         /// </summary>
         /// <return>uint</return>
-        public UInt32 StatusMask { get { return getUint32Value("StatusMask"); } set { setValue("StatusMask", value); } }
+        public uint StatusMask { get => getUint32Value("StatusMask"); set => setValue("StatusMask", value); }
 
         /// <summary>
         /// TimeSubmitted
         /// </summary>
         /// <return>DateTime</return>
-        public object TimeSubmitted { get { return getValue("TimeSubmitted"); } }
+        public object TimeSubmitted => getValue("TimeSubmitted");
 
         /// <summary>
         /// TotalPages
         /// </summary>
         /// <return>uint</return>
-        public UInt32 TotalPages { get { return getUint32Value("TotalPages"); } }
+        public uint TotalPages => getUint32Value("TotalPages");
 
         /// <summary>
         /// UntilTime
         /// </summary>
         /// <return>DateTime</return>
-        public object UntilTime { get { return getValue("UntilTime"); } }
+        public object UntilTime => getValue("UntilTime");
 
         /// <summary>
         /// Get Event Value
@@ -215,7 +215,10 @@
             // Return
             string result;
             try {
-                var field = getValue(propertyName);
+                // Get Value
+                object field = getValue(propertyName);
+
+                // Result
                 result = (string)field;
             }
             catch (Exception) {
@@ -229,13 +232,13 @@
         /// </summary>
         /// <param name="propertyName"></param>
         /// <returns></returns>
-        private UInt32 getUint32Value(string propertyName) {
+        private uint getUint32Value(string propertyName) {
 
             // Return
-            UInt32 result;
+            uint result;
 
             try {
-                result = (UInt32)getValue(propertyName);
+                result = (uint)getValue(propertyName);
 
             }
             catch (Exception) {
@@ -327,13 +330,9 @@
         /// </summary>
         public StatusFlag Flag {
 
-            get {
-                return (StatusFlag)StatusMask;
-            }
+            get => (StatusFlag)StatusMask;
 
-            set {
-                StatusMask = (uint)value;
-            }
+            set => StatusMask = (uint)value;
         }
 
         /// <summary>

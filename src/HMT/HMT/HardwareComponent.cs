@@ -28,10 +28,10 @@
             this.className = className;
 
             // Set Finder
-            this.Finder = new HardwareFinder(className);
+            Finder = new HardwareFinder(className);
 
             // Set Watcher
-            this.Watcher = new HardwareWatcher(className);
+            Watcher = new HardwareWatcher(className);
         }
     }
 }

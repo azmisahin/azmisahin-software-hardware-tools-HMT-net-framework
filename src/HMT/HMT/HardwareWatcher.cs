@@ -93,14 +93,14 @@
             this.userName = userName;
             this.password = password;
             this.computerName = computerName;
-            this.authority = $"ntlmdomain:{domain}";
+            authority = $"ntlmdomain:{domain}";
 
             // Connection Options
-            connectionOptions = new ConnectionOptions();
-
-            connectionOptions.Username = this.userName;
-            connectionOptions.Password = this.password;
-            connectionOptions.Authority = this.authority;
+            connectionOptions = new ConnectionOptions {
+                Username = this.userName,
+                Password = this.password,
+                Authority = authority
+            };
         }
 
         /// <summary>
@@ -110,34 +110,38 @@
 
             // see cref="https://docs.microsoft.com/en-us/windows/win32/wmisdk/connecting-to-wmi-on-a-remote-computer"
             // see cref="https://docs.microsoft.com/en-us/windows/win32/wmisdk/connecting-to-wmi-remotely-with-c-"
-            this.path = $"\\\\{this.computerName}\\root\\CIMV2";
+            path = $"\\\\{computerName}\\root\\CIMV2";
 
             // Management Path Define
-            managementPath = new ManagementPath();
-            managementPath.Path = this.path;
+            managementPath = new ManagementPath {
+                Path = path
+            };
 
             // Management Scope Define
-            managementScope = new ManagementScope();
-            managementScope.Path = managementPath;
+            managementScope = new ManagementScope {
+                Path = managementPath
+            };
 
             // Local Connection
-            if (connectionOptions != null)
+            if (connectionOptions != null) {
                 managementScope.Options = connectionOptions;
+            }
 
             // Query Define
             // see cref="https://docs.microsoft.com/en-us/windows/win32/wmisdk/--instancecreationevent"
             // see cref="https://docs.microsoft.com/en-us/windows/win32/wmisdk/select-statement-for-event-queries"
             // see cref="https://docs.microsoft.com/en-us/windows/win32/wmisdk/receiving-a-wmi-event"
             //query = $"Select * From__InstanceCreationEvent WITHIN 0.001 WHERE TargetInstance ISA \"{this.className}\" ";
-            query = $"Select * From __InstanceOperationEvent Within 1 Where TargetInstance ISA \"{this.className}\" ";
+            query = $"Select * From __InstanceOperationEvent Within 1 Where TargetInstance ISA \"{className}\" ";
 
             // see cref="https://docs.microsoft.com/tr-tr/dotnet/api/system.management.wqleventquery"
             // see cref="https://docs.microsoft.com/en-us/dotnet/api/system.management.wqleventquery.withininterval"
             // see cref="https://docs.microsoft.com/tr-tr/dotnet/api/system.management.wqleventquery.eventclassname"
             //WqlEventQuery wqlEventQuery = new WqlEventQuery(query);
 
-            eventQuery = new EventQuery();
-            eventQuery.QueryString = query;
+            eventQuery = new EventQuery {
+                QueryString = query
+            };
 
             // Managament Scope Connect
             connectScope();
@@ -147,6 +151,8 @@
         /// Managament Scope Connect
         /// </summary>
         private void connectScope() {
+
+            // Connect
             managementScope.Connect();
         }
 
@@ -155,19 +161,21 @@
         /// </summary>
         /// <param name="interval"></param>
         public void Watch(long interval = 1) {
+
             // Initalize Watcher
             initalizeWatcher();
 
             // Watcher Define and Set
             // see cref="https://docs.microsoft.com/tr-tr/dotnet/api/system.management.managementeventwatcher"
-            managementEventWatcher = new ManagementEventWatcher();
+            managementEventWatcher = new ManagementEventWatcher {
 
-            // see cref="https://docs.microsoft.com/tr-tr/dotnet/api/system.management.managementeventwatcher.scope"
-            managementEventWatcher.Scope = managementScope;
+                // see cref="https://docs.microsoft.com/tr-tr/dotnet/api/system.management.managementeventwatcher.scope"
+                Scope = managementScope,
 
-            // see cref="https://docs.microsoft.com/tr-tr/dotnet/api/system.management.managementeventwatcher.query
-            //managementEventWatcher.Query = wqlEventQuery;
-            managementEventWatcher.Query = eventQuery;
+                // see cref="https://docs.microsoft.com/tr-tr/dotnet/api/system.management.managementeventwatcher.query
+                //managementEventWatcher.Query = wqlEventQuery;
+                Query = eventQuery
+            };
 
             // times out watcher.WaitForNextEvent in { interval } seconds
             //managementEventWatcher.Options.Timeout = new TimeSpan(interval);
@@ -184,6 +192,8 @@
         /// Watcher Close
         /// </summary>
         public void Close() {
+
+            // Close Dispose
             if (managementEventWatcher != null) {
 
                 // Unregister Event
@@ -199,11 +209,33 @@
         /// <see cref="https://docs.microsoft.com/tr-tr/dotnet/api/system.idisposable.dispose?view=netframework-4.7.1"/>
         public void Dispose() {
 
-            // Close App
-            Close();
+            // Dispose
+            Dispose(true);
 
             // Garbage Clean
             GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Disposed
+        /// </summary>
+        private bool disposed;
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing) {
+
+            // Disposed Control
+            if (disposed) {
+                return;
+            }
+
+            if (disposing) {
+
+                // Close App
+                Close();
+            }
+
+            disposed = true;
         }
 
         /// <summary>
@@ -216,10 +248,10 @@
         /// Signal On
         /// </summary>
         /// <param name="e">Hardware Event</param>
-        protected virtual void OnSignal(HardwareEvent e) {
+        protected virtual void OnSignal(object sender, HardwareEvent hardwareEvent) {
 
-            // Signal Hander
-            Signal?.Invoke(this, e);
+            // Signal Handler
+            Signal?.Invoke(this, hardwareEvent);
         }
 
         /// <summary>
@@ -227,16 +259,17 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ManagementEventWatcher_EventArrived(object sender, EventArrivedEventArgs e) {
+        private void ManagementEventWatcher_EventArrived(object sender, EventArrivedEventArgs eventArrivedEventArgs) {
 
             // Hardware Event Define
-            HardwareEvent hardwareEvent = new HardwareEvent();
+            HardwareEvent hardwareEvent = new HardwareEvent {
 
-            // Hardware Event Set
-            hardwareEvent.Base = e;
+                // Hardware Event Set
+                Base = eventArrivedEventArgs
+            };
 
             // Signal Start
-            OnSignal(hardwareEvent);
+            OnSignal(sender, hardwareEvent);
         }
     }
 }

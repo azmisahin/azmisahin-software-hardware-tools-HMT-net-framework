@@ -12,8 +12,7 @@
         public PrinterJob() : base("Win32_PrintJob") {
 
             // Base Watcher
-            this
-                .Watcher
+            Watcher
                 .Signal += Watcher_Signal;
         }
 
@@ -22,16 +21,17 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Watcher_Signal(object sender, HardwareEvent e) {
+        private void Watcher_Signal(object sender, HardwareEvent hardwareEvent) {
 
             // Print Job Event
-            PrintJobEvent printJobEvent = new PrintJobEvent();
+            PrintJobEvent printJobEvent = new PrintJobEvent {
 
-            // Set Data
-            printJobEvent.Base = e.Base;
+                // Set Data
+                Base = hardwareEvent.Base
+            };
 
             // Signal Start
-            OnSignal(printJobEvent);
+            OnSignal(sender, printJobEvent);
         }
 
         /// <summary>
@@ -43,10 +43,10 @@
         /// Print Job Event
         /// </summary>
         /// <param name="e"></param>
-        protected virtual void OnSignal(PrintJobEvent e) {
+        protected virtual void OnSignal(object sender, PrintJobEvent printJobEvent) {
 
             // Signal Handler
-            Signal?.Invoke(this, e);
+            Signal?.Invoke(this, printJobEvent);
         }
     }
 }
