@@ -8,7 +8,7 @@
         public void PrinterJobTest() {
 
             // mock
-            var mock = new Mock<PrinterJob>();
+            Mock<PrinterJob> mock = new Mock<PrinterJob>();
 
             // Test
             Assert.IsNotNull(mock);

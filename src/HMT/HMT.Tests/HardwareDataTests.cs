@@ -8,7 +8,7 @@
         public void HardwareDataTest() {
 
             // mock
-            var mock = new Mock<HardwareData>();
+            Mock<HardwareData> mock = new Mock<HardwareData>();
 
             // Test
             Assert.IsNotNull(mock);

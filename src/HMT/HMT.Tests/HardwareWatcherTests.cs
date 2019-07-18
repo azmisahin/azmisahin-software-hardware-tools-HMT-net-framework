@@ -8,7 +8,7 @@
         public void AuthenticationTest() {
 
             // mock
-            var mock = new Mock<HardwareWatcher>();
+            Mock<HardwareWatcher> mock = new Mock<HardwareWatcher>();
 
             // Test
             Assert.IsNotNull(mock);
@@ -18,7 +18,7 @@
         public void WatchTest() {
 
             // mock
-            var mock = new Mock<HardwareWatcher>();
+            Mock<HardwareWatcher> mock = new Mock<HardwareWatcher>();
 
             // Test
             Assert.IsNotNull(mock);
@@ -28,7 +28,7 @@
         public void CloseTest() {
 
             // mock
-            var mock = new Mock<HardwareWatcher>();
+            Mock<HardwareWatcher> mock = new Mock<HardwareWatcher>();
 
             // Test
             Assert.IsNotNull(mock);
@@ -38,7 +38,7 @@
         public void DisposeTest() {
 
             // mock
-            var mock = new Mock<HardwareWatcher>();
+            Mock<HardwareWatcher> mock = new Mock<HardwareWatcher>();
 
             // Test
             Assert.IsNotNull(mock);

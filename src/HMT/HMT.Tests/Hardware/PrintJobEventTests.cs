@@ -8,7 +8,7 @@
         public void PrintJobEventTest() {
 
             // mock
-            var mock = new Mock<PrintJobEvent>();
+            Mock<PrintJobEvent> mock = new Mock<PrintJobEvent>();
 
             // Test
             Assert.IsNotNull(mock);
@@ -18,7 +18,7 @@
         public void setValueTest() {
 
             // mock
-            var mock = new Mock<PrintJobEvent>();
+            Mock<PrintJobEvent> mock = new Mock<PrintJobEvent>();
 
             // Test
             Assert.IsNotNull(mock);

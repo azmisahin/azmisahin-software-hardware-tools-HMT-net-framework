@@ -7,7 +7,7 @@
         [TestMethod()]
         public void GetHardwareTest() {
             // mock
-            var mock = new Mock<HardwareFinder>();
+            Mock<HardwareFinder> mock = new Mock<HardwareFinder>();
 
             // Test
             Assert.IsNotNull(mock);
@@ -16,7 +16,7 @@
         [TestMethod()]
         public void ExecuteTest() {
             // mock
-            var mock = new Mock<HardwareFinder>();
+            Mock<HardwareFinder> mock = new Mock<HardwareFinder>();
 
             // Test
             Assert.IsNotNull(mock);
