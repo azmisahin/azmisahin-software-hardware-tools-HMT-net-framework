@@ -172,3 +172,36 @@ Basically, the application interface toolkit that targets windows devices plans 
         }
     }
 ```
+
+> Find Example
+
+```cs
+    using System;
+    using System.Collections.Generic;
+    using HMT.Hardware;
+    public class FindTests {
+
+        /// <summary>
+        /// Printer Hardware
+        /// </summary>
+        private Printer hardware;
+
+        public void HardwareFindListTest() {
+
+            // Job Initalize
+            hardware = new Printer();
+
+            // Get All Hardware
+            List<HardwareData> hardwares = hardware
+                .Finder
+                .Hardwares;
+
+            // Hardware List 
+            foreach (HardwareData item in hardwares) {
+
+                // Print Hardware
+                Console.WriteLine($"Name : {item.Name}");
+            }
+        }
+    }
+```

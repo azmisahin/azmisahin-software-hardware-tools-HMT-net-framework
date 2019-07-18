@@ -7,9 +7,17 @@
     public class PrinterJob : HardwareComponent {
 
         /// <summary>
+        /// Hardware Watcher
+        /// </summary>
+        public HardwareWatcher Watcher { get; set; }
+
+        /// <summary>
         /// Protected
         /// </summary>
         public PrinterJob() : base("Win32_PrintJob") {
+
+            // Set Watcher
+            Watcher = new HardwareWatcher("Win32_PrintJob");
 
             // Base Watcher
             Watcher

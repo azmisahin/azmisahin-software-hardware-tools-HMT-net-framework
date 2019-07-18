@@ -1,4 +1,4 @@
-﻿namespace HMT.Tests {
+﻿namespace HMT.Tests.Application {
     using System.Threading;
     using System.Threading.Tasks;
     using HMT.Hardware;

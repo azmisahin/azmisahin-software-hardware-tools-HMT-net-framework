@@ -70,8 +70,9 @@
     <Compile Include="Hardware\PrinterTests.cs" />
     <Compile Include="Hardware\PrintJobEventTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AuthenticationTest.cs" />
-    <Compile Include="WatchTests.cs" />
+    <Compile Include="Application\AuthenticationTest.cs" />
+    <Compile Include="Application\FindTests.cs" />
+    <Compile Include="Application\WatchTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HMT\HMT.csproj">
