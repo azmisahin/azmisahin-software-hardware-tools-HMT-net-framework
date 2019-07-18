@@ -1,7 +1,7 @@
-# devops-architecture-Automation
+# Hardware Management Tool
 
-Architecture example of continuous integration, continuous deployment of packaging and version management with dev-ops tools: automation
+A management tool that provides easy access to hardware interfaces to automate management tasks on local or remote computers.
 
-## Pipelines
+IT managers and System Specialists; provides fast and practical solutions for monitoring, reporting and auditing critical operations.
 
-[![Build status](https://dev.azure.com/azmisahin-github/azmisahin-software-devops-architecture-Automation-net/_apis/build/status/azmisahin-software-devops-architecture-Automation-net-CI)](https://dev.azure.com/azmisahin-github/azmisahin-software-devops-architecture-Automation-net/_build/latest?definitionId=-1)
+Basically, the application interface toolkit that targets windows devices plans to support other operating systems such as linux and macos in the future.
