@@ -50,7 +50,8 @@
                 // Print Hardware Property List
                 foreach (HardwareDataProperty property in item.Properties) {
                     if (property.Value != null) {
-                        Console.WriteLine($"    >   {property.Name}\t|{property.Value}");
+                        Console.WriteLine(
+                            $"    >   {property.Name}\t|{property.Value}");
                     }
                 }
             }
