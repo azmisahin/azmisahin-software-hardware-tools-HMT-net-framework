@@ -28,6 +28,11 @@
         private string computerName { get; set; } = ".";
 
         /// <summary>
+        /// Domain Name Or Workgroup Name
+        /// </summary>
+        private string domainName { get; set; }
+
+        /// <summary>
         /// Class Query
         /// </summary>
         private string query { get; set; }
@@ -82,18 +87,29 @@
         }
 
         /// <summary>
+        /// Is Authentication
+        /// </summary>
+        public bool isAuthentication => (
+                    string.IsNullOrEmpty(userName) ||
+                    string.IsNullOrEmpty(password) ||
+                    string.IsNullOrEmpty(computerName) ||
+                    string.IsNullOrEmpty(computerName)
+                    ) && true ? false : true;
+
+        /// <summary>
         /// Authentication
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="password"></param>
         /// <param name="computerName"></param>
         /// <param name="domain"></param>
-        public void Authentication(string userName, string password, string computerName, string domain) {
+        public bool Authentication(string userName, string password, string computerName, string domain) {
 
             this.userName = userName;
             this.password = password;
             this.computerName = computerName;
-            authority = $"ntlmdomain:{domain}";
+            domainName = domain;
+            authority = $"ntlmdomain:{domainName}";
 
             // Connection Options
             connectionOptions = new ConnectionOptions {
@@ -101,6 +117,8 @@
                 Password = this.password,
                 Authority = authority
             };
+
+            return isAuthentication;
         }
 
         /// <summary>
@@ -206,7 +224,7 @@
         /// <summary>
         /// Dispose
         /// </summary>
-        /// <see cref="https://docs.microsoft.com/tr-tr/dotnet/api/system.idisposable.dispose?view=netframework-4.7.1"/>
+        /// <see cref="https://docs.microsoft.com/tr-tr/dotnet/api/system.idisposable.dispose"/>
         public void Dispose() {
 
             // Dispose
