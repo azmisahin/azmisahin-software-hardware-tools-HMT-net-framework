@@ -315,6 +315,11 @@
             Restart = 0x800,
 
             /// <summary>
+            ///  Idled
+            /// </summary>
+            Idled = 8192,
+
+            /// <summary>
             /// Continue ?
             /// </summary>
             Continue = 8216,
