@@ -149,8 +149,9 @@
             // see cref="https://docs.microsoft.com/en-us/windows/win32/wmisdk/--instancecreationevent"
             // see cref="https://docs.microsoft.com/en-us/windows/win32/wmisdk/select-statement-for-event-queries"
             // see cref="https://docs.microsoft.com/en-us/windows/win32/wmisdk/receiving-a-wmi-event"
-            //query = $"Select * From__InstanceCreationEvent WITHIN 0.001 WHERE TargetInstance ISA \"{this.className}\" ";
-            query = $"Select * From __InstanceOperationEvent Within 1 Where TargetInstance ISA \"{className}\" ";
+            // see cref="https://docs.microsoft.com/en-us/windows/win32/wmisdk/within-clause"
+            query = $"Select * From __InstanceOperationEvent Within 0.001 Where TargetInstance ISA \"{className}\" ";
+            // query = $"Select * From __InstanceOperationEvent Within 1 Where TargetInstance ISA \"{className}\" ";
 
             // see cref="https://docs.microsoft.com/tr-tr/dotnet/api/system.management.wqleventquery"
             // see cref="https://docs.microsoft.com/en-us/dotnet/api/system.management.wqleventquery.withininterval"
@@ -196,7 +197,7 @@
             };
 
             // times out watcher.WaitForNextEvent in { interval } seconds
-            //managementEventWatcher.Options.Timeout = new TimeSpan(interval);
+            managementEventWatcher.Options.Timeout = new TimeSpan(interval);
 
             // Watcher Event
             // see cref="https://docs.microsoft.com/tr-tr/dotnet/api/system.management.eventarrivedeventargs"

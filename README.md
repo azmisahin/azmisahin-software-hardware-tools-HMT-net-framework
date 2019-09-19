@@ -10,6 +10,8 @@ Basically, the application interface toolkit that targets windows devices plans 
 
 [![Build status](https://dev.azure.com/azmisahin-github/azmisahin-software-devops-architecture-Automation-net/_apis/build/status/azmisahin-software-devops-architecture-Automation-net-CI)](https://dev.azure.com/azmisahin-github/azmisahin-software-devops-architecture-Automation-net/_build/latest?definitionId=16)
 
+[![NuGet version (HMT)](https://img.shields.io/nuget/v/HMT.svg?style=flat-square)](https://www.nuget.org/packages/HMT/)
+
 ## Install
 
 nuget.org | Package Manager
